@@ -22,9 +22,9 @@ RUN apt-get -y update \
             php5-xmlrpc \
             php5-xsl \
             nano \
-            nodejs \
             git \
             build-essential\
+            
             
         && apt-get remove --purge -y vim \
         && apt-get purge -y \
@@ -51,6 +51,29 @@ RUN a2ensite 000-default \
     # SSL
     && mkdir /etc/apache2/ssl \
     && openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt -subj '/O=OSTraining/OU=Development/CN=www.ostraining.com' -batch
+
+
+# Installing NodeJS
+sudo apt-get install curl
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install -y nodejs
+
+# Install Node Packages
+
+npm install -g yo
+npm install -g nodemon
+npm install -g grunt-cli
+npm install -g bower
+npm install -g sails
+npm install -g less
+npm install -g pug
+npm install -g express
+npm install -g gulp
+npm install -g mikser
+npm install -g droppy
+npm install -g n
+npm install -g npm-check
+
 
 # Exposes the port 80
 EXPOSE 80
