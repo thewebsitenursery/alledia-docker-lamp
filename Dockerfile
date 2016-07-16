@@ -22,6 +22,10 @@ RUN apt-get -y update \
             php5-xmlrpc \
             php5-xsl \
             nano \
+            nodejs \
+            git \
+            build-essential\
+            
         && apt-get remove --purge -y vim \
         && apt-get purge -y \
         && rm -rf /var/lib/apt/lists/* \
@@ -39,7 +43,7 @@ RUN a2ensite 000-default \
     && a2enmod substitute rewrite ssl proxy proxy_http \
     # MySQL
     && service mysql start \
-    && mysqladmin -u root password root \
+    && mysqladmin -u root password hampshire \
     # Enable SSH - For development environments only
     && rm -f /etc/service/sshd/down \
     && /etc/my_init.d/00_regen_ssh_host_keys.sh \
